@@ -1,11 +1,18 @@
 <template>
   <div class="book-list">
     <table v-if="books.length">
-      <book v-for="book in books" :book="book" :key="book.id" :title="book.title" :subtitle="book.subtitle"
-            :abstract="book.abstract"
-            :isbn="book.isbn"></book>
+      <book
+        v-for="book in books"
+        :book="book"
+        :key="book.id"
+        :title="book.title"
+        :subtitle="book.subtitle"
+        :abstract="book.abstract"
+        :isbn="book.isbn"
+      ></book>
     </table>
-    <h1 v-else>Sorry there are no books here, perhaps
+    <h1 v-else>
+      Sorry there are no books here, perhaps
       <router-link to="/">add one</router-link>
       ?
     </h1>
@@ -20,51 +27,45 @@
 
 
 <script>
-  import Book from "@/components/Book.vue"
-  import {bookGet} from "../api/api";
+import Book from "@/components/Book.vue";
+import { bookGet } from "../api";
 
-
-  // let initial = 1
-
-  export default {
-
-    name: "books",
-    components: {
-      Book
-    },
-    data() {
-
-
-      return {
-        books: [],
-        // [
-        //   {
-        //     id: initial++,
-        //     title: 'A Brief History of Time: from the Big Bang to Black Holes',
-        //     author: 'Stephen William Hawking',
-        //     publishDate: 1988
-        //   }
-        // ]
-      }
-    },
-    created: function () {
-      bookGet().then(response => {
-        console.log(response.data)
+export default {
+  name: "books",
+  components: {
+    Book,
+  },
+  data() {
+    return {
+      books: [],
+      // [
+      //   {
+      //     id: initial++,
+      //     title: 'A Brief History of Time: from the Big Bang to Black Holes',
+      //     author: 'Stephen William Hawking',
+      //     publishDate: 1988
+      //   }
+      // ]
+    };
+  },
+  created: function () {
+    bookGet()
+      .then((response) => {
+        console.log(response.data);
         if (response.status == 200) {
           // this.$set('books', response.data)
-          this.books = response.data
+          this.books = response.data;
         }
-      }).catch(error => {
-        console.log(error)
       })
-    }
-
-
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+};
 </script>
 
 <style scoped>
-  .book-list {
-    margin: 0 auto;
-  }
+.book-list {
+  margin: 0 auto;
+}
 </style>

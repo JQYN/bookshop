@@ -1,14 +1,14 @@
 <template>
-    <books></books>
+  <books></books>
 </template>
 
 <script>
-import Books from '@/components/Books.vue'
+import Books from "@/components/Books.vue";
 
 export default {
-    name: 'market',
-    components: {
-        Books
-    }
-}
+  name: "market",
+  components: {
+    Books,
+  },
+};
 </script>

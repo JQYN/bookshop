@@ -49,8 +49,6 @@ export class User {
     return this._isConfirmed;
   }
   constructor(id, username, email, firstName, lastName, isConfirmed) {
-
-
     this._id = id;
     this._username = username;
     this._email = email;

@@ -1,0 +1,15 @@
+{
+  "Post": {
+    "title": "string",
+    "views": "int",
+    "published": "boolean",
+    "createdAt": "date"
+  },
+  "Book": {
+    "title": "string",
+    "authors": "string",
+    "isbn": "string",
+    "subtitle": "string",
+    "abstract": "string"
+  }
+}

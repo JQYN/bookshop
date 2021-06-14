@@ -3,11 +3,10 @@
 </template>
 
 <script>
-  export default {
-    name: "AddBookForm"
-  }
+export default {
+  name: "AddBookForm",
+};
 </script>
 
 <style scoped>
-
 </style>

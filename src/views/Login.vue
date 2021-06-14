@@ -6,7 +6,11 @@
         <el-input v-model="username" placeholder="username"></el-input>
       </el-form-item>
       <el-form-item label="Password">
-        <el-input type="password" v-model="pwd" placeholder="password"></el-input>
+        <el-input
+          type="password"
+          v-model="pwd"
+          placeholder="password"
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Login</el-button>
@@ -16,49 +20,50 @@
 </template>
 
 <script>
-  import {accountGet, authGetToken} from "../api/api";
-  import jwt from "jsonwebtoken"
+import { accountGet, authGetToken } from "../api";
+import jwt from "jsonwebtoken";
 
-  export default {
-    name: "login-box",
+export default {
+  name: "login-box",
 
-    data: function () {
-      return {
-        username: "",
-        pwd: ""
-
-      };
-    },
-    methods: {
-      onSubmit() {
-        authGetToken(this.username, this.pwd).then(response => {
-          console.log(response)
+  data: function () {
+    return {
+      username: "",
+      pwd: "",
+    };
+  },
+  methods: {
+    onSubmit() {
+      authGetToken(this.username, this.pwd)
+        .then((response) => {
+          console.log(response);
           if (response.status === 200) {
-            localStorage.setItem("token", JSON.stringify(response.data))
-            let uid = jwt.decode(response.data.access).user_id
-            return accountGet(uid)
-
+            localStorage.setItem("token", JSON.stringify(response.data));
+            let uid = jwt.decode(response.data.access).user_id;
+            return accountGet(uid);
           }
-        }).then(response => {
+        })
+        .then((response) => {
           if (response.status === 200) {
-            localStorage.setItem("user", JSON.stringify(response.data))
+            localStorage.setItem("user", JSON.stringify(response.data));
             this.$store.commit({
               type: "setUser",
-              user: response.data
-            })
+              user: response.data,
+            });
           }
-        }).catch(error => {
-          console.log(error.response.data)
         })
-      },
-    }
-  };
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-  #login {
-    width: 25vw;
-    margin: auto;
-  }
+#login {
+  width: 25vw;
+  margin: auto;
+}
 </style>
 
