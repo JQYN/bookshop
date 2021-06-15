@@ -1,12 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Market from "../views/Market.vue";
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
   {
     path: "/about",
     name: "About",
@@ -18,27 +14,32 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("./views/Login.vue"),
+    component: () => import("../views/Login.vue"),
   },
   {
     path: "/add-book",
     name: "addBook",
-    component: () => import("./views/AddBook.vue"),
+    component: () => import("../views/AddBook.vue"),
   },
   {
     path: "/market",
     name: "market",
-    component: () => import("./views/Market.vue"),
+    component: Market,
   },
   {
     path: "/user/:id",
     name: "user",
-    component: () => import("./views/Home"),
+    component: () => import("../views/Home.vue"),
+  },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 });
 

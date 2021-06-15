@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const api = "http://127.0.0.1:8000/api/"
+const api = "https://mockend.com/jqyn/bookshop/"
 
 export const register = () => {
   return axios.request({
@@ -57,13 +57,22 @@ export const accountUpdate = (id, user) => {
   })
 }
 
-export const bookGet = (id = "") => {
+export const booksGet = () => {
   return axios.request({
     method: "get",
     baseURL: api,
-    url: `book/${id}`
+    url: `books`
   })
 }
+
+export const bookGet = (id = "1") => {
+  return axios.request({
+    method: "get",
+    baseURL: api,
+    url: `books/${id}`
+  })
+}
+
 
 export const bookCreate = (book) => {
   return axios.request({
