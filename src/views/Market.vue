@@ -6,7 +6,7 @@
 import Books from "@/components/Books.vue";
 
 export default {
-  name: "market",
+  name: "Market",
   components: {
     Books,
   },

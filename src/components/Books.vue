@@ -1,8 +1,6 @@
 <template>
   <div v-if="books.length" class="flex">
-    <div v-for="book of books" :key="book.id">
-      <book :book="book"></book>
-    </div>
+    <book v-for="book of books" :key="book.id" :book="book"></book>
   </div>
 
   <h1 v-else>

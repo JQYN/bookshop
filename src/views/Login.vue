@@ -20,11 +20,10 @@
 </template>
 
 <script>
-import { accountGet, authGetToken } from "../api";
-import jwt from "jsonwebtoken";
+import { authGetToken } from "../api";
 
 export default {
-  name: "login-box",
+  name: "Login",
 
   data: function () {
     return {
@@ -39,17 +38,6 @@ export default {
           console.log(response);
           if (response.status === 200) {
             localStorage.setItem("token", JSON.stringify(response.data));
-            let uid = jwt.decode(response.data.access).user_id;
-            return accountGet(uid);
-          }
-        })
-        .then((response) => {
-          if (response.status === 200) {
-            localStorage.setItem("user", JSON.stringify(response.data));
-            this.$store.commit({
-              type: "setUser",
-              user: response.data,
-            });
           }
         })
         .catch((error) => {

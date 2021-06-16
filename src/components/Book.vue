@@ -2,7 +2,7 @@
   <el-card class="box-card">
       <div class="card-header">
         <span>{{ book.title }}</span>
-        <el-button class="button" type="text">操作按钮</el-button>
+        <el-button class="button" type="text">Buy</el-button>
       </div>
       <div>
         <p>{{book.subtitle}}</p>
